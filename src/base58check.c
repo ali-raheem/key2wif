@@ -2,7 +2,6 @@
 #include <gmp.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 extern char *b58encode(const char const *instr) {
   char charset[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
@@ -33,20 +32,21 @@ extern char *b58encode(const char const *instr) {
   if (NULL == output)
     return output;
 
-  reversestr(output);
+  strrev(output);
 
   mpz_clears(x, r, d, t, NULL);
   return output;
 }
 
-void reversestr(char *str) {
+void strrev(char *str) {
   size_t len = strlen(str);
+  if (len < 2)
+    return;
   char t;
-  size_t i = 0;
-  while(i < (len/2)) {
+  size_t i;
+  for(i = 0; i < (len/2); i++) {
     t = str[i];
     str[i] = str[len - i - 1];
     str[len - i - 1] = t;
-    i++;
   }
 }

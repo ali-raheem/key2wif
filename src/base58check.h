@@ -3,8 +3,9 @@
 
 #include <gmp.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 char *b58encode(const char const *);
-void reversestr(char *);
+void strrev(char *);
 #endif
