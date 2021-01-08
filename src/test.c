@@ -6,4 +6,6 @@ int main(int argc, char *argv[]) {
     return 1;
   char *s = b58encode(argv[1]);
   puts(s);
+  s = b58decode(s);
+  puts(s);
 }
